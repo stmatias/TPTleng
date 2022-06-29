@@ -7,9 +7,9 @@ from randomData import randomArray, randomString, randomFloat64, randomInt, rand
 start = 's'
 
 def p_s(p):
-    '''s : TYPE ID STRUCT L_BRCK t R_BRCK  
+    '''s : TYPE ID STRUCT L_BRCK t R_BRCK s 
+        | empty
         '''    
-    # Por ahora comente el llamado recursivo y | empty
     if len(p) == 2:
         p[0] = ''
     else:
