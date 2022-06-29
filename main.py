@@ -1,19 +1,38 @@
 import ply.lex as lex
 import ply.yacc as yacc
 
+# s -> TYPE ID STRUCT L_BRCK t R_BRCK s | lamda.
+# s_anidado -> STRUCT L_BRCK t R_BRCK.
+# t -> ID t'
+# t' -> s_anidado | tipo | array
+# tipo -> STRING| INT |FLOAT64 | BOOL.
+# array -> ARRAY array'.
+# array' -> tipo | array.
 
 
-# VT = {STRING, INT, FLOAT64, BOOL, RBRACKET, LBRACKET, ARRAY}
-tokens = ['TYPE','ID','STRING', 'INT', 'FLOAT64', 'BOOL', 'RBRACKET', 'LBRACKET', 'ARRAY' ]
 
-#VN = {S, }
+# VT = {STRING, INT, FLOAT64, BOOL, RBRACKET, LBRACKET, ARRAY, STRUCT}
+tokens = ['TYPE','ID','STRING', 'INT', 'FLOAT64', 'BOOL', 'R_BRCK', 'L_BRCK', 'ARRAY', 'STRUCT' ]
+
 
 
 t_L_BRCK = r'{'
 t_R_BRCK = r'}'
 t_ARRAY = r'\[\]'
-
+# ToDo: Agregar EndofLine 
 t_ignore = ' \t\n'
+
+
+
+def t_TYPE(t):
+    r'type'
+    t.type = 'TYPE'
+    return t
+
+def t_STRUCT(t):
+    r'struct'
+    t.type = 'STRUCT'
+    return t
 
 def t_ID(t):
     r'[a-zA-Z_][a-zA-Z_0-9]*'
@@ -47,39 +66,11 @@ def t_error(t):
 
 lexer = lex.lex()
 
+def p_s(p):
+    '''
+    s -> 
+    '''
 
-def p_attributes(p):
-    '''
-    attributes : attribute attributes 
-               | empty
-    '''
-    if len(p) == 2: 
-        p[0] = p[1]
-    else:
-        p[0] = p[1] + p[2]
-
-def p_attribute(p):
-    '''
-    attribute : ID ID
-    '''
-    if p[2] not in ['string', 'float', 'int']:
-        p_error(p)
-        raise SyntaxError
-    else:
-        p[0] = ' ' + p[1] + ' ' + p[2]
-
-def p_array(p):
-    '''
-    array : ARRAY
-          | empty
-    '''
-    p[0] = p[1]
-
-def p_empty(p):
-    '''
-    empty :
-    '''
-    p[0] = ''
     
 def p_error(p):
     print('SyntaxError')
