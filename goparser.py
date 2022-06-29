@@ -7,9 +7,9 @@ from randomData import randomArray, randomString, randomFloat64, randomInt, rand
 start = 's'
 
 def p_s(p):
-    '''s : TYPE ID STRUCT L_BRCK t R_BRCK s 
-        | empty
+    '''s : TYPE ID STRUCT L_BRCK t R_BRCK  
         '''    
+    # Por ahora comente el llamado recursivo y | empty
     if len(p) == 2:
         p[0] = ''
     else:
@@ -17,7 +17,7 @@ def p_s(p):
         rb = p[6]
         # por ahora no se como usar p[1] + p[2] + p[3]
         lines = p[5]
-        p[0] = lb + '\n' + lines + rb + '\n' + p[7]
+        p[0] = lb + '\n' + lines + '\n' + rb + '\n' #+ p[7]
 
 def p_s_anidado(p):
     's_anidado : STRUCT L_BRCK t R_BRCK'
@@ -44,12 +44,13 @@ def p_tipo(p):
         | FLOAT64 
         | BOOL 
     '''
+    print(p[1])
     if p[1]=='string':
         p[0] = randomString()
     elif p[1]=='int':
-        p[0] = randomInt()
+        p[0] = str(randomInt())
     elif p[1]=='float64':
-        p[0] = randomFloat64()
+        p[0] = str(randomFloat64())
     elif p[1]=='bool':
         p[0] = randomBool()
     else:
@@ -92,6 +93,14 @@ def p_error(p):
         token = f"{p.type}({p.value}) on line {p.lineno}"
 
     print(f"Syntax error: Unexpected {token}")
+
+        # get formatted representation of stack
+    stack_state_str = ' '.join([symbol.type for symbol in parser.symstack][1:])
+
+    print('Syntax error in input! Parser State:{} {} . {}'
+          .format(parser.state,
+                  stack_state_str,
+                  p))
 
 parser = yacc.yacc()
 

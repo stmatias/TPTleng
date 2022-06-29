@@ -15,7 +15,7 @@ def randomBool():
 def randomFloat64():
     return random.uniform(0, 10)
 
-def randomList(type):
+def randomArray(type):
     return [randomType(type) for i in range(random.randint(0, 5))]
 
 def randomType(type):

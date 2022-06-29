@@ -19,11 +19,6 @@ def t_STRUCT(t):
     t.type = 'STRUCT'
     return t
 
-def t_ID(t):
-    r'[a-z][a-zA-Z_0-9]*'
-    t.type = 'ID'
-    return t
-
 def t_STRING(t):
     r'string'
     t.type = 'STRING'
@@ -42,6 +37,12 @@ def t_BOOL(t):
 def t_FLOAT64(t):
     r'float64'
     t.type = 'FLOAT64'
+    return t
+
+# Si se coloca arriba el lexer lo toma como un ID a los tipos 
+def t_ID(t):
+    r'[a-z][a-zA-Z_0-9]*'
+    t.type = 'ID'
     return t
 
 def t_error(t):
