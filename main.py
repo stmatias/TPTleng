@@ -62,6 +62,8 @@ def t_FLOAT64(t):
     t.type = 'FLOAT64'
     return t
 
+
+
 def t_error(t):
     print("Illegal character '%s'" % t.value[0])
     t.lexer.skip(1)
@@ -69,48 +71,56 @@ def t_error(t):
 
 lexer = lex.lex()
 
+def p_empty(p):
+     'empty :'
+     pass
+
 def p_s(p):
-    '''
-    S -> TYPE ID STRUCT { t } S | lambda. 
-    '''
+    '''s : TYPE ID STRUCT L_BRCK t R_BRCK s 
+        | empty
+        ''' 
     if len(p) == 0:
         p[0] = []
     else:
         p[0] = () 
 
-def p_anidado(p):
-    '''
-    s_anidado -> STRUCT L_BRCK t R_BRCK.
-    '''
+def p_s_anidado(p):
+    's_anidado : STRUCT L_BRCK t R_BRCK'
     pass
 
 def p_t(p):
     '''
-    t -> ID t1
+    t : ID t1
     '''
     p[0] = p[1] + p[2]
 
 def p_t1(p):
     '''
-    t1 -> s_anidado | tipo | array
+    t1 : s_anidado 
+        | tipo 
+        | array
     '''
     p[0] = p[1]
 
 def p_tipo(p):
     '''
-    tipo -> STRING| INT |FLOAT64 | BOOL.
+    tipo : STRING
+        | INT 
+        | FLOAT64 
+        | BOOL 
     '''
     p[0] = p[1]
 
 def p_array(p):
     '''
-    array -> ARRAY array1 .
+    array : ARRAY array1
     '''
     p[0] = p[1] + p[2]
 
 def p_array1(p):
     '''
-    array1 -> tipo | array.
+    array1 : tipo 
+        | array
     '''
     p[0] = p[1]
 
@@ -126,4 +136,5 @@ def readParse(str):
     #return out
 
 if __name__ == "__main__":
-    readParse(sys.argv[1])
+    if(len(sys.argv)>1):
+        readParse(sys.argv[1])
