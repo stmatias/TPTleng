@@ -118,24 +118,7 @@ def p_array1(p):
 def p_error(p):
     print('SyntaxError')
 
-
 parser = yacc.yacc()
-
-""" 
-def p_binary_operators(p):
-'''expression : expression '+' term
-| expression '-' term
-term : term '*' factor
-| term '/' factor'''
-if p[2] == '+':
-p[0] = p[1] + p[3]
-elif p[2] == '-':
-p[0] = p[1] - p[3]
-elif p[2] == '*':
-p[0] = p[1] * p[3]
-elif p[2] == '/':
-p[0] = p[1] / p[3] 
-"""
 
 def readParse(str):
     out = parser.parse(str)
