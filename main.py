@@ -38,7 +38,7 @@ def t_STRUCT(t):
     return t
 
 def t_ID(t):
-    r'[a-zA-Z_][a-zA-Z_0-9]*'
+    r'[a-z][a-zA-Z_0-9]*'
     t.type = 'ID'
     return t
 
@@ -131,6 +131,10 @@ def p_error(p):
 parser = yacc.yacc()
 
 def readParse(str):
+    # Chequear dependencias circulares
+    # Todos los identificadores deben comenzar por una letra min´uscula.
+    # Dependencias definidas (por ejemplo cuando re uso un struct)
+    # Levantar excepciones sin no 
     out = parser.parse(str)
     print(out)
     #return out
