@@ -1,8 +1,8 @@
-import sys
 import ply.lex as lex
 import ply.yacc as yacc
 
 import sys
+from randomData import randomList, randomString, randomFloat64, randomInt, randomBool
 
 # s -> TYPE ID STRUCT L_BRCK t R_BRCK s | lambda.
 # s_anidado -> STRUCT L_BRCK t R_BRCK.
