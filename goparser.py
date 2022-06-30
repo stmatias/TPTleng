@@ -1,8 +1,9 @@
+from random import randint
 import ply.yacc as yacc
-from tlexer import tokens
+from tlexer import *
 
-from randomData import randomArray, randomString, randomFloat64, randomInt, randomBool
-
+from randomData import randomString, randomFloat64, randomInt, randomBool
+from expressions import ARRAY
 
 start = 's'
 
@@ -19,9 +20,6 @@ def p_s(p):
         lines = p[5]
         p[0] = lb + '\n' + lines + '\n' + rb + '\n' #+ p[7]
 
-def p_s_anidado(p):
-    's_anidado : STRUCT L_BRCK t R_BRCK'
-    pass
 
 def p_t(p):
     '''
@@ -42,7 +40,17 @@ def p_t1(p):
         | tipo 
         | array
     '''
-    p[0] = p[1]
+    if isinstance(p[1], ARRAY):
+        p[0] = p[1].getRecursiveArray()
+    else: 
+        p[0] = p[1]
+
+def p_s_anidado(p):
+    's_anidado : STRUCT L_BRCK t R_BRCK'
+    lb = p[2]
+    rb = p[4]
+    lines = p[3]
+    p[0] = lb + '\n' + lines + '\n' + rb 
 
 def p_tipo(p):
     '''
@@ -67,26 +75,22 @@ def p_array(p):
     '''
     array : ARRAY array1
     '''
-    #p[0] = p[1] + p[2]
     p[0] = p[2]
 
 def p_array1(p):
     '''
-    array1 : tipo 
+    array1 : STRING
+        | INT 
+        | FLOAT64 
+        | BOOL 
         | array
     '''
-    if p[1]=='string':
-        p[0] = randomArray('string')
-    elif p[1]=='int':
-        p[0] = randomArray('int')
-    elif p[1]=='float64':
-        p[0] = randomArray('float64')
-    elif p[1]=='bool':
-        p[0] = randomArray('bool')
+    if p[1]=='string' or p[1]=='int'or p[1]=='float64'or p[1]=='bool':
+        p[0] = ARRAY(p[1])
     else: 
-        p[0] = [p[1]]
+        p[1].increaseNesting()
+        p[0] = p[1]
     
-    #p[0] = p[1]
 
 def p_empty(p):
      'empty :'
@@ -112,7 +116,7 @@ parser = yacc.yacc()
 
 def readParse(str):
     # Chequear dependencias circulares
-    # Todos los identificadores deben comenzar por una letra min´uscula.
+    # Agregar error todos los identificadores deben comenzar por una letra min´uscula.
     # Dependencias definidas (por ejemplo cuando re uso un struct)
     # Levantar excepciones sin no 
     out = parser.parse(str)
