@@ -25,9 +25,16 @@ def p_s_anidado(p):
 
 def p_t(p):
     '''
-    t : ID t1
+    t : ID t1 t
+      | empty
     '''
-    p[0] = "\"" + p[1] + "\": " + p[2]
+    if len(p) == 2:
+        p[0] = ''
+    else:
+        if p[3] == '':
+            p[0] = "\"" + p[1] + "\": " + p[2]
+        else:
+            p[0] = "\"" + p[1] + "\": " + p[2] + ",\n" + p[3]
 
 def p_t1(p):
     '''
@@ -44,7 +51,6 @@ def p_tipo(p):
         | FLOAT64 
         | BOOL 
     '''
-    print(p[1])
     if p[1]=='string':
         p[0] = randomString()
     elif p[1]=='int':
@@ -52,7 +58,7 @@ def p_tipo(p):
     elif p[1]=='float64':
         p[0] = str(randomFloat64())
     elif p[1]=='bool':
-        p[0] = randomBool()
+        p[0] = str(randomBool())
     else:
         raise Exception('Error de TIPO')
 
