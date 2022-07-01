@@ -1,9 +1,10 @@
+from platform import node
 from random import randint
 import ply.yacc as yacc
 from tlexer import *
 
 from randomData import randomString, randomFloat64, randomInt, randomBool
-from expressions import ARRAY
+from expressions import ARRAY, Node, BasicTypeExpression
 
 start = 's'
 
@@ -12,13 +13,15 @@ def p_s(p):
         | empty
         '''    
     if len(p) == 2:
-        p[0] = ''
+        p[0] = p[1]
     else:
         lb = p[4]
         rb = p[6]
-        # por ahora no se como usar p[1] + p[2] + p[3]
+        id = Node("structID",leaf=p[2]) 
         lines = p[5]
-        p[0] = lb + '\n' + lines + '\n' + rb + '\n' #+ p[7]
+        p[0] =  Node("s", [id, p[5],p[7]]) 
+        print(p[0].getDependencies())
+        #print(lb + '\n' + lines + '\n' + rb + '\n' + p[7])
 
 
 def p_t(p):
@@ -29,10 +32,12 @@ def p_t(p):
     if len(p) == 2:
         p[0] = ''
     else:
-        if p[3] == '':
+        id = Node("ID",leaf=p[1]) 
+        p[0] = Node("t", [id,p[2]]) 
+"""         if p[3] == '':
             p[0] = "\"" + p[1] + "\": " + p[2]
         else:
-            p[0] = "\"" + p[1] + "\": " + p[2] + ",\n" + p[3]
+            p[0] = "\"" + p[1] + "\": " + p[2] + ",\n" + p[3] """
 
 def p_t1(p):
     '''
@@ -43,7 +48,7 @@ def p_t1(p):
     if isinstance(p[1], ARRAY):
         p[0] = p[1].getRecursiveArray()
     else: 
-        p[0] = p[1]
+        p[0] = Node("t1", [p[1]]) 
 
 def p_s_anidado(p):
     's_anidado : STRUCT L_BRCK t R_BRCK'
@@ -59,16 +64,7 @@ def p_tipo(p):
         | FLOAT64 
         | BOOL 
     '''
-    if p[1]=='string':
-        p[0] = randomString()
-    elif p[1]=='int':
-        p[0] = str(randomInt())
-    elif p[1]=='float64':
-        p[0] = str(randomFloat64())
-    elif p[1]=='bool':
-        p[0] = str(randomBool())
-    else:
-        raise Exception('Error de TIPO')
+    p[0] = Node("tipo", leaf=p[1])
 
 
 def p_array(p):
@@ -93,8 +89,8 @@ def p_array1(p):
     
 
 def p_empty(p):
-     'empty :'
-     pass
+    'empty :'
+    p[0] = Node("empty")
 
 def p_error(p):
     if p == None:
