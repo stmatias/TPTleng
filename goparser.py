@@ -1,48 +1,7 @@
-from random import randint
-
-from numpy import identity
 import ply.yacc as yacc
 from tlexer import *
 
-from randomData import randomString, randomFloat64, randomInt, randomBool
-from expressions import ARRAY
-
-class Expr: 
-    pass
- 
-class StructNode(Expr):
-    def __init__(self,children=None, empty=False):
-        self.type = "struct"
-        self.children = children
-        self.empty = empty
-
-    def json(self):
-        if self.empty:
-            return ''
-        else:
-            lines = self.children[0]
-            nextStruct= self.children[1]
-            return '{' + '\n' + lines.json() + '\n' + '}' + '\n' + nextStruct.json()
-
-class BasicExpression(Expr):
-    def __init__(self,type):
-        self.type = type
-        self.leaf = True
-
-    def json(self):
-        return self.getSampleValue()
-
-    def getSampleValue(self):
-        if self.type == 'string':
-            return randomString()
-        elif self.type == 'int':
-            return str(randomInt())
-        elif self.type == 'float64':
-            return str(randomFloat64())
-        elif self.type == 'bool':
-            return str(randomBool())
-        else:
-            raise Exception('Error de TIPO')
+from expressions import *
 
 start = 'sSanitazadora'
 
@@ -71,21 +30,6 @@ def p_s(p):
         nextStruct = p[7]
         p[0] = StructNode([lines,nextStruct])    
 
-class LinesNode(Expr):
-    def __init__(self,children=None, empty=False):
-        self.type = "lines"
-        self.children = children
-        self.empty = empty
-
-    def json(self):
-        if self.empty:
-            return ''
-        else:
-            if self.children[2].empty:
-                return "\"" + self.children[0] + "\": " + self.children[1]
-            else:
-                return "\"" + self.children[0] + "\": " + self.children[1] + ",\n" + self.children[2]
-
 
 def p_lines(p):
     '''
@@ -97,21 +41,6 @@ def p_lines(p):
     else:
         p[0] = LinesNode(p[1],[p[2], p[3]])
 
-class LinesNode(Expr):
-    def __init__(self,id='', children=None, empty=False):
-        self.type = "lines"
-        self.children = children
-        self.id = id
-        self.empty = empty
-
-    def json(self):
-        if self.empty:
-            return ''
-        else:
-            if self.children[1].empty:
-                return "\"" + self.id + "\": " + self.children[0].json()
-            else:
-                return "\"" + self.id + "\": " + self.children[0].json() + ",\n" + self.children[1].json()
 
 def p_exp(p):
     '''
