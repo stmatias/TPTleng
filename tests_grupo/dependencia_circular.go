@@ -6,7 +6,3 @@ type persona struct {
 	activo bool
 }
 
-persona pertenece a NoConocidas? SI 
-
-
-		pariente persona
