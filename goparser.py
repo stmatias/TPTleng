@@ -15,6 +15,7 @@ def p_sSanitizadora(p):
         '''sSanitazadora : s '''
         #p[1].revisarDependenciasCirculares()        
         #p[1] es un NodoStruct
+        p[1].sanitize()
         p[0] = p[1].json() # sanitizar(p[1])
 
 
@@ -24,11 +25,11 @@ def p_s(p):
         '''    
     
     if len(p) == 2:
-        p[0] = StructNode(empty=True) # ''
+        p[0] = StructNode('empty_struct',empty=True, lineno = p.lineno(0)) # ''
     else:
         lines = p[5]
         nextStruct = p[7]
-        p[0] = StructNode([lines,nextStruct])    
+        p[0] = StructNode(p[2],[lines,nextStruct], lineno = p.lineno(0))    
 
 
 def p_lines(p):
@@ -99,8 +100,8 @@ def p_array1(p):
     
 
 def p_empty(p):
-     'empty :'
-     pass
+    'empty :'
+    pass
 
 def p_error(p):
     if p == None:
@@ -125,5 +126,5 @@ def readParse(str):
     # Agregar error todos los identificadores deben comenzar por una letra min´uscula.
     # Dependencias definidas (por ejemplo cuando re uso un struct)
     # Levantar excepciones sin no 
-    out = parser.parse(str)
+    out = parser.parse(str,tracking=True)
     return out

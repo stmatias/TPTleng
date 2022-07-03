@@ -35,7 +35,7 @@ if __name__ == "__main__":
     args = argparser.parse_args()
     
     if args.file:
-        text = ''.join(args.file.readlines())
+        text = '\n'.join(args.file.readlines())
         json = readParse(text)
     elif args.text:
         json = readParse(args.text)    

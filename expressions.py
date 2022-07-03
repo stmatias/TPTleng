@@ -1,3 +1,4 @@
+from fileinput import lineno
 from random import randint
 from randomData import randomArray, randomString, randomFloat64, randomInt, randomBool
 
@@ -5,10 +6,27 @@ class Expr:
     pass
  
 class StructNode(Expr):
-    def __init__(self,children=None, empty=False):
+    def __init__(self, id,children=None, empty=False, lineno=None):
         self.type = "struct"
         self.children = children
         self.empty = empty
+        self.id = id
+        self.lineno = lineno
+    
+    def checkRedefinition(self):
+        if not self.empty:
+            nextStruct= self.children[1]
+            knownStructs = [self.id]
+            nextStruct.checkRedefinitionAux(knownStructs)
+    
+    def checkRedefinitionAux(self, knownStructs):
+        for st in knownStructs:
+            if st == self.id:
+                raise Exception(f'Error, otra declaracion de: {self.id} en la linea {self.lineno}')        
+        knownStructs.append(self.id)
+                
+    def sanitize(self):
+        self.checkRedefinition()
 
     def json(self):
         if self.empty:
