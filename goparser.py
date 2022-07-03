@@ -1,9 +1,48 @@
 from random import randint
+
+from numpy import identity
 import ply.yacc as yacc
 from tlexer import *
 
 from randomData import randomString, randomFloat64, randomInt, randomBool
 from expressions import ARRAY
+
+class Expr: 
+    pass
+ 
+class StructNode(Expr):
+    def __init__(self,children=None, empty=False):
+        self.type = "struct"
+        self.children = children
+        self.empty = empty
+
+    def json(self):
+        if self.empty:
+            return ''
+        else:
+            lines = self.children[0]
+            nextStruct= self.children[1]
+            return '{' + '\n' + lines.json() + '\n' + '}' + '\n' + nextStruct.json()
+
+class BasicExpression(Expr):
+    def __init__(self,type):
+        self.type = type
+        self.leaf = True
+
+    def json(self):
+        return self.getSampleValue()
+
+    def getSampleValue(self):
+        if self.type == 'string':
+            return randomString()
+        elif self.type == 'int':
+            return str(randomInt())
+        elif self.type == 'float64':
+            return str(randomFloat64())
+        elif self.type == 'bool':
+            return str(randomBool())
+        else:
+            raise Exception('Error de TIPO')
 
 start = 'sSanitazadora'
 
@@ -13,101 +52,76 @@ structs_no_conocidas = {}
 # no haya interseccion entre conocidas y no conocidas. 
 # y que no agregamos una dos veces dict[key] = value, revisar que key no pertenece antes de agregar a conocidas
 
-
-
-
-def reemplazarConocidas(cadena):
-    for key in structs_no_conocidas.keys():
-        cadena = cadena.replace(key, structs_no_conocidas[key])
-    return cadena
-
-def hayDependenciaCircular():
-    return structs_conocidas.keys() & structs_no_conocidas.keys()
-
-
-def revisarDependenciasCirculares():
-    if hayDependenciaCircular():
-        raise Exception('Error de dependencias circulares')    
-
 def p_sSanitizadora(p):
         '''sSanitazadora : s '''
-        revisarDependenciasCirculares()        
-        p[0] = reemplazarConocidas(p[1])# sanitizar(p[1])
-
-        print('Conocidas: ',structs_conocidas)
-        print('No conocidas: ',structs_no_conocidas)
-        """ Revisa por dependencias circulares, tipos definidos mas de una vez
-        {
-        "nombre": "qeoexedu",
-        "edad": 535,
-        "nacionalidad": pais,
-        "ventas": [],
-        "activo": true
-        } donde pais va a estar en una estrcutura guardada y lo reemplazamos 
-        """ 
+        #p[1].revisarDependenciasCirculares()        
+        #p[1] es un NodoStruct
+        p[0] = p[1].json() # sanitizar(p[1])
 
 
 def p_s(p):
-    '''s : TYPE ID STRUCT L_BRCK t R_BRCK s 
+    '''s : TYPE ID STRUCT L_BRCK lines R_BRCK s 
         | empty
         '''    
     
     if len(p) == 2:
-        p[0] = ''
-
-# pais {nacionalidad pais}
-
-# hijos pais : pais ERROR 
-
-# persona {nacionalidad pais}
-
-#pais {}
-
-    elif p[2] in structs_no_conocidas.keys():
-        lb = p[4]
-        rb = p[6]
-        lines = p[5]
-        structs_no_conocidas[p[2]] = lb + '\n' + lines + '\n' + rb + '\n' + p[7]
-        p[0]= ''
+        p[0] = StructNode(empty=True) # ''
     else:
-        lb = p[4]
-        rb = p[6]
         lines = p[5]
-        p[0] = lb + '\n' + lines + '\n' + rb + '\n' + p[7]
-        if (p[2] in structs_conocidas.keys()):
-            raise Exception('Error de dependencias struct redefinido')
-        structs_conocidas[p[2]] = p[0]
+        nextStruct = p[7]
+        p[0] = StructNode([lines,nextStruct])    
 
-        
+class LinesNode(Expr):
+    def __init__(self,children=None, empty=False):
+        self.type = "lines"
+        self.children = children
+        self.empty = empty
+
+    def json(self):
+        if self.empty:
+            return ''
+        else:
+            if self.children[2].empty:
+                return "\"" + self.children[0] + "\": " + self.children[1]
+            else:
+                return "\"" + self.children[0] + "\": " + self.children[1] + ",\n" + self.children[2]
 
 
-def p_t(p):
+def p_lines(p):
     '''
-    t : ID t1 t
+    lines : ID exp lines
       | empty
     '''
     if len(p) == 2:
-        p[0] = ''
+        p[0] = LinesNode(empty=True)
     else:
-        if p[3] == '':
-            p[0] = "\"" + p[1] + "\": " + p[2]
-        else:
-            p[0] = "\"" + p[1] + "\": " + p[2] + ",\n" + p[3]
+        p[0] = LinesNode(p[1],[p[2], p[3]])
 
-def p_t1(p):
+class LinesNode(Expr):
+    def __init__(self,id='', children=None, empty=False):
+        self.type = "lines"
+        self.children = children
+        self.id = id
+        self.empty = empty
+
+    def json(self):
+        if self.empty:
+            return ''
+        else:
+            if self.children[1].empty:
+                return "\"" + self.id + "\": " + self.children[0].json()
+            else:
+                return "\"" + self.id + "\": " + self.children[0].json() + ",\n" + self.children[1].json()
+
+def p_exp(p):
     '''
-    t1 : s_anidado 
+    exp : s_anidado 
         | tipo 
         | array
         | s_sinDefinir
     '''
-    if isinstance(p[1], ARRAY):
-        p[0] = p[1].getRecursiveArray()
-    else: 
-        p[0] = p[1]
-        # Agregamos pais a un dict, para luego en el json final reemplazar pais por el strcut de pais y ademas, 
-        # cuando leamos un pais mas adelante, no lo imprimimos
-        # 
+    p[0] = p[1]
+
 
 def p_s_sinDefinir(p):
     '''s_sinDefinir : ID'''
@@ -118,7 +132,7 @@ def p_s_sinDefinir(p):
 
 
 def p_s_anidado(p):
-    '''s_anidado : STRUCT L_BRCK t R_BRCK'''
+    '''s_anidado : STRUCT L_BRCK lines R_BRCK'''
     lb = p[2]
     rb = p[4]
     lines = p[3]
@@ -131,16 +145,7 @@ def p_tipo(p):
         | FLOAT64 
         | BOOL 
     '''
-    if p[1]=='string':
-        p[0] = randomString()
-    elif p[1]=='int':
-        p[0] = str(randomInt())
-    elif p[1]=='float64':
-        p[0] = str(randomFloat64())
-    elif p[1]=='bool':
-        p[0] = str(randomBool())
-    else:
-        raise Exception('Error de TIPO')
+    p[0] = BasicExpression(p[1])
 
 
 def p_array(p):

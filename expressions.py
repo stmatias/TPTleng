@@ -1,6 +1,9 @@
 from random import randint
 from randomData import randomArray, randomString, randomFloat64, randomInt, randomBool
 
+from randomData import randomString, randomFloat64, randomInt, randomBool
+from expressions import *
+
 class ARRAY():
     def __init__(self, type):
         self.type = type
