@@ -3,34 +3,22 @@ from tlexer import *
 
 from expressions import *
 
-start = 'sSanitazadora'
-
-structs_conocidas = {}
-structs_no_conocidas = {}
-
-# no haya interseccion entre conocidas y no conocidas. 
-# y que no agregamos una dos veces dict[key] = value, revisar que key no pertenece antes de agregar a conocidas
+start = 's'
 
 def p_sSanitizadora(p):
-        '''sSanitazadora : s '''
-        #p[1].revisarDependenciasCirculares()        
-        #p[1] es un NodoStruct
+        '''s : struct '''
         p[1].sanitize()
-        p[0] = p[1].json() # sanitizar(p[1])
+        p[0] = indent(p[1].json())
+        # ToDo: Hacer indent
 
-
-def p_s(p):
-    '''s : TYPE ID STRUCT L_BRCK lines R_BRCK s 
+def p_struct(p):
+    '''struct : TYPE ID STRUCT L_BRCK lines R_BRCK struct 
         | empty
         '''    
-    
     if len(p) == 2:
         p[0] = StructNode('empty_struct',empty=True, lineno = p.lineno(0)) # ''
     else:
-        lines = p[5]
-        nextStruct = p[7]
-        p[0] = StructNode(p[2],[lines,nextStruct], lineno = p.lineno(0))    
-
+        p[0] = StructNode(p[2],lines = p[5],nextStruct=p[7], lineno = p.lineno(0))    
 
 def p_lines(p):
     '''
@@ -42,31 +30,22 @@ def p_lines(p):
     else:
         p[0] = LinesNode(p[1],[p[2], p[3]])
 
-
 def p_exp(p):
     '''
-    exp : s_anidado 
+    exp : struct_anidado 
         | tipo 
         | array
         | s_sinDefinir
     '''
     p[0] = p[1]
 
-
 def p_s_sinDefinir(p):
     '''s_sinDefinir : ID'''
-    if p[1] in structs_conocidas.keys():
-        raise Exception('Error de dependencias circulares')
-    structs_no_conocidas[p[1]] = p[1]
-    p[0] = p[1]
+    p[0] = StructNodeSinDefinir(p[1],lineno = p.lineno(0))
 
-
-def p_s_anidado(p):
-    '''s_anidado : STRUCT L_BRCK lines R_BRCK'''
-    lb = p[2]
-    rb = p[4]
-    lines = p[3]
-    p[0] = lb + '\n' + lines + '\n' + rb 
+def p_struct_anidado(p):
+    '''struct_anidado : STRUCT L_BRCK lines R_BRCK'''
+    p[0] = StructAnidadoNode(id=p[-1],lines=p[3],lineno = p.lineno(0))
 
 def p_tipo(p):
     '''
@@ -76,7 +55,6 @@ def p_tipo(p):
         | BOOL 
     '''
     p[0] = BasicExpression(p[1])
-
 
 def p_array(p):
     '''
@@ -92,13 +70,12 @@ def p_array1(p):
         | BOOL 
         | array
     '''
-    if p[1]=='string' or p[1]=='int'or p[1]=='float64'or p[1]=='bool':
-        p[0] = ARRAY(p[1])
+    if p[1] in ['string','int','float64','bool']:
+        p[0] = ArrayExpression(p[1])
     else: 
         p[1].increaseNesting()
         p[0] = p[1]
     
-
 def p_empty(p):
     'empty :'
     pass
@@ -111,7 +88,7 @@ def p_error(p):
 
     print(f"Syntax error: Unexpected {token}")
 
-        # get formatted representation of stack
+    # get formatted representation of stack
     stack_state_str = ' '.join([symbol.type for symbol in parser.symstack][1:])
 
     print('Syntax error in input! Parser State:{} {} . {}'
@@ -122,9 +99,7 @@ def p_error(p):
 parser = yacc.yacc()
 
 def readParse(str):
-    # Chequear dependencias circulares
     # Agregar error todos los identificadores deben comenzar por una letra min´uscula.
-    # Dependencias definidas (por ejemplo cuando re uso un struct)
     # Levantar excepciones sin no 
     out = parser.parse(str,tracking=True)
     return out
