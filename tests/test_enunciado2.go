@@ -4,6 +4,7 @@ type persona struct {
 	ventas []float64
 	activo bool
 }
+
 type pais struct {
 	nombre string
 	codigo struct {

@@ -4,7 +4,7 @@ import string
 def randomString():
     letters = string.ascii_lowercase
     vowels = "aeiou"
-    return '"' + "".join(random.choice((letters, vowels)[i%2]) for i in range(random.randint(0, 10)))  + '"'
+    return '"' + "".join(random.choice((letters, vowels)[i%2]) for i in range(random.randint(0, 10))) + '"'
 
 def randomInt():
     return random.randint(0, 1000)

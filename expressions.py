@@ -2,14 +2,11 @@ from logging import root
 from random import randint
 from randomData import randomArray, randomString, randomFloat64, randomInt, randomBool
 
-
 class Expr:
     pass
 
-
 structs_no_definidos = {}
 structs_definidos = {}
-
 
 class StructNode(Expr):
     def __init__(self, id, lines=None, nextStruct=None, empty=False, lineno=None):
@@ -40,8 +37,7 @@ class StructNode(Expr):
     def checkRedefinitionAux(self, knownStructs):
         for st in knownStructs:
             if st == self.id:
-                print(
-                    f'Error, otra declaracion de: {self.id} en la linea {self.lineno}')
+                print(f'Error, otra declaracion de: {self.id} en la linea {self.lineno}')
                 raise SyntaxError
         knownStructs.append(self.id)
 
@@ -95,7 +91,6 @@ class StructNodeSinDefinir(StructNode):
 
 
 class StructAnidadoNode(StructNode):
-
     def __init__(self, id, lines=None, empty=False, lineno=None):
         self.lines = lines
         self.empty = empty
@@ -113,8 +108,7 @@ class StructAnidadoNode(StructNode):
     def checkCircularDependencyAux(self, knownStructs):
         for st in knownStructs:
             if st == self.id:
-                print(
-                    f'Error, dependencia circular de: {self.id} en la linea {self.lineno}')
+                print(f'Error, dependencia circular de: {self.id} en la linea {self.lineno}')
                 raise SyntaxError
         if not self.empty:
             self.lines.checkCircularDependencyAux(knownStructs)
@@ -143,7 +137,6 @@ class BasicExpression(Expr):
     def checkCircularDependencyAux(self, knownStructs):
         pass
 
-
 class LinesNode(Expr):
     def __init__(self, id='', children=None, empty=False):
         self.children = children
@@ -151,7 +144,6 @@ class LinesNode(Expr):
         self.empty = empty
 
     def json(self):
-
         if self.empty:
             return ''
         else:
@@ -165,7 +157,6 @@ class LinesNode(Expr):
             for child in self.children:
                 child.checkCircularDependencyAux(knownStructs)
 
-
 class ArrayExpression(Expr):
     def __init__(self, type):
         self.type = type
@@ -175,30 +166,6 @@ class ArrayExpression(Expr):
 
     def checkCircularDependencyAux(self, knownStructs):
         pass
-
-    def jsonBoolString(self, array):
-        if len(array) == 0:
-            return '[]'
-        if isinstance(array[0], list):
-            acc = '['
-            for i in range(len(array)):
-                acc += self.jsonBoolString(array[i])
-            acc += ']'
-        else:
-            acc = '[{}]'.format(', '.join(array))
-        return acc
-
-    def jsonListString(self, array):
-        if len(array) == 0:
-            return '[]'
-        if isinstance(array[0], list):
-            acc = '['
-            for i in range(len(array)):
-                acc += self.jsonListString(array[i])
-            acc += ']'
-        else:
-            acc = '[%s]' % ', '.join(map(str, array))
-        return acc
 
     def auxGetArray(self, type):
         if type == 'string':
@@ -214,12 +181,23 @@ class ArrayExpression(Expr):
         return self.getRecursiveArray()
 
     def getRecursiveArray(self):
-        if self.type == 'string':
-            return self.jsonListString(self.auxGetRecursiveArray())
-        elif self.type == 'bool':
-            return self.jsonBoolString(self.auxGetRecursiveArray())
-        else:
-            return str(self.auxGetRecursiveArray())
+        return self.jsonListMapped(mapFunction=str, lst=self.auxGetRecursiveArray())
+
+    def jsonListMapped (self, mapFunction, lst):
+        acc = ''
+
+        for i in range(len(lst)):
+            item = lst[i]
+
+            if isinstance(item, list):
+                acc += self.jsonListMapped(mapFunction, item)
+            else:
+                acc += mapFunction(item)
+
+            if i != len(lst)-1:
+                acc += ', '
+
+        return '[' + acc + ']'
 
     def auxGetRecursiveArray(self):
         if self.nesting == 0:

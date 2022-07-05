@@ -98,9 +98,9 @@ def p_error(p):
                   p))
 
 parser = yacc.yacc()
-
 def readParse(str):
+    # print(str)
     # Agregar error todos los identificadores deben comenzar por una letra min´uscula.
     # Levantar excepciones sin no 
-    out = parser.parse(str,tracking=True)
+    out = parser.parse(str, tracking=True)
     return out
