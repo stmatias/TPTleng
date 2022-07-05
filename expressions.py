@@ -28,6 +28,10 @@ class StructNode(Expr):
             assert(self.nextStruct is not None)
             structs_definidos[self.id] = self
 
+    def sanitize(self):
+        self.checkRedefinition()
+        self.checkCircularDependency()
+
     def checkRedefinition(self):
         if not self.empty:
             knownStructs = [self.id]
@@ -56,15 +60,12 @@ class StructNode(Expr):
         if not self.empty:
             self.lines.checkCircularDependencyAux(knownStructs)
 
-    def sanitize(self):
-        self.checkRedefinition()
-        self.checkCircularDependency()
-
     def json(self):
         if self.empty or self.id in structs_no_definidos.keys():
             return ''
         else:
-            return '{' + '\n' + self.lines.json() + '\n' + '}' + '\n' + self.nextStruct.json()
+            # Solo Imprime el tipo principal, descomentar para imprimir el sig struct
+            return '{' + '\n' + self.lines.json() + '\n' + '}' + '\n' #+ self.nextStruct.json()
 
     def jsonForce(self):
         return '{' + '\n' + self.lines.json() + '\n' + '}' + self.nextStruct.json()
@@ -83,7 +84,11 @@ class StructNodeSinDefinir(StructNode):
         structs_no_definidos[self.id] = self
 
     def checkCircularDependencyAux(self, knownStructs):
-        structs_definidos[self.id].checkCircularDependencyAux(knownStructs)
+        if self.id in structs_definidos.keys():
+            structs_definidos[self.id].checkCircularDependencyAux(knownStructs)
+        else:
+            print(f'Error, tipo no definido para: {self.id} en la linea {self.lineno}')
+            raise SyntaxError
 
     def json(self):
         return structs_definidos[self.id].jsonForce()

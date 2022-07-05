@@ -3,9 +3,9 @@ from tlexer import *
 
 from expressions import *
 
-start = 's'
+# PLY empieza con la primera produccion que se encuentra, ya que no definimos start
 
-def p_sSanitizadora(p):
+def p_s(p):
         '''s : struct '''
         p[1].sanitize()
         p[0] = indent(p[1].json())
@@ -16,9 +16,10 @@ def p_struct(p):
         | empty
         '''    
     if len(p) == 2:
-        p[0] = StructNode('empty_struct',empty=True, lineno = p.lineno(0)) # ''
+        # Todos los structs deben tener id en minimuscula
+        p[0] = StructNode(id='EMPTY_STRUCT',empty=True, lineno = p.lineno(0)) # ''
     else:
-        p[0] = StructNode(p[2],lines = p[5],nextStruct=p[7], lineno = p.lineno(0))    
+        p[0] = StructNode(id=p[2],lines = p[5],nextStruct=p[7], lineno = p.lineno(0))    
 
 def p_lines(p):
     '''

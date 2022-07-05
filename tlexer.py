@@ -12,7 +12,7 @@ t_ignore = ' \t' # Ignora espacios y tabulaciones
 # Para trackear los numeros de linea
 def t_newline(t):
     r'\n+'
-    t.lineno += len(t.value)
+    t.lexer.lineno += len(t.value)
 
 def t_TYPE(t):
     r'type'
