@@ -36,12 +36,12 @@ def p_exp(p):
     exp : struct_anidado 
         | tipo 
         | array
-        | s_sinDefinir
+        | struct_sinDefinir
     '''
     p[0] = p[1]
 
-def p_s_sinDefinir(p):
-    '''s_sinDefinir : ID'''
+def p_struct_sinDefinir(p):
+    '''struct_sinDefinir : ID'''
     p[0] = StructNodeSinDefinir(p[1],lineno = p.lineno(0))
 
 def p_struct_anidado(p):
