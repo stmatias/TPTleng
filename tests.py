@@ -31,8 +31,6 @@ def run_tests(with_error):
 
         if not 'ERROR' in filename and not is_json(myjson):
             print('-- ERROR --\n\n');
-        elif is_json(myjson) and 'ERROR' in filename:
-            print('-- ERROR --\n\n');
         else:
             quantity_ok += 1
             print('-- OK --\n\n');
