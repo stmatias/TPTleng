@@ -17,10 +17,10 @@ def run_tests(with_error):
   for filename in glob.glob(os.path.join(path, '*.go')):
       with open(os.path.join(os.getcwd(), filename), 'r') as f: # open in readonly mode
 
-        if with_error and not filename.startswith('tests/ERROR'):
+        if with_error and not 'ERROR' in filename:
           continue
         
-        if not with_error and filename.startswith('tests/ERROR'):
+        if not with_error and 'ERROR' in filename:
           continue
 
         print(filename);
