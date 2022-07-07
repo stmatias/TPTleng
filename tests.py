@@ -18,7 +18,7 @@ def run_tests(with_error):
       with open(os.path.join(os.getcwd(), filename), 'r') as f: # open in readonly mode
 
         if with_error and not filename.startswith('tests/ERROR'):
-            continue
+          continue
         
         if not with_error and filename.startswith('tests/ERROR'):
           continue
