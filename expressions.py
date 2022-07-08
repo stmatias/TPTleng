@@ -215,5 +215,3 @@ class ArrayExpression(Expr):
     def getCounter(self):
         return self.nesting
 
-def indent(text):
-    return text

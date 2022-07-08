@@ -8,7 +8,7 @@ from expressions import *
 def p_s(p):
         '''s : struct '''
         p[1].sanitize()
-        p[0] = indent(p[1].json())
+        p[0] = p[1].json()
 
 def p_struct(p):
     '''struct : TYPE ID STRUCT L_BRCK lines R_BRCK struct 
