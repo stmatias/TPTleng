@@ -9,7 +9,6 @@ def p_s(p):
         '''s : struct '''
         p[1].sanitize()
         p[0] = indent(p[1].json())
-        # ToDo: Hacer indent
 
 def p_struct(p):
     '''struct : TYPE ID STRUCT L_BRCK lines R_BRCK struct 
