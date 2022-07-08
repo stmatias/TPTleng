@@ -1,0 +1,467 @@
+<svg width="4884pt" height="1216pt" viewBox="0.00 0.00 4884.00 1216.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 1212)">
+<title>LR(1) Automaton</title>
+<polygon fill="white" stroke="white" points="-4,5 -4,-1212 4881,-1212 4881,5 -4,5"></polygon>
+<!-- s0 -->
+<g id="node1" class="node"><title>s0</title>
+<polygon fill="none" stroke="black" points="0.2426,-1064 0.2426,-1164 395.757,-1164 395.757,-1064 0.2426,-1064"></polygon>
+<text text-anchor="middle" x="198" y="-1147.4" font-family="Times,serif" font-size="14.00">0</text>
+<polyline fill="none" stroke="black" points="0.2426,-1139.2 395.757,-1139.2 "></polyline>
+<text text-anchor="middle" x="198" y="-1122.6" font-family="Times,serif" font-size="14.00">[s → • struct, $]</text>
+<text text-anchor="middle" x="198" y="-1105.8" font-family="Times,serif" font-size="14.00">[struct → • TYPE ID STRUCT L_BRCK lines R_BRCK struct, $]</text>
+<text text-anchor="middle" x="198" y="-1089" font-family="Times,serif" font-size="14.00">[struct → •, $]</text>
+<text text-anchor="middle" x="198" y="-1072.2" font-family="Times,serif" font-size="14.00">[• s, $]</text>
+</g>
+<!-- s1 -->
+<g id="node2" class="node"><title>s1</title>
+<polygon fill="none" stroke="black" points="634.867,-1158.2 634.867,-1207.8 697.133,-1207.8 697.133,-1158.2 634.867,-1158.2"></polygon>
+<text text-anchor="middle" x="666" y="-1191.2" font-family="Times,serif" font-size="14.00">1</text>
+<polyline fill="none" stroke="black" points="634.867,-1183 697.133,-1183 "></polyline>
+<text text-anchor="middle" x="666" y="-1166.4" font-family="Times,serif" font-size="14.00">[s •, $]</text>
+</g>
+<!-- s0&#45;&gt;s1 -->
+<g id="edge2" class="edge"><title>s0-&gt;s1</title>
+<path fill="none" stroke="black" d="M395.951,-1143.16C481.471,-1155.83 573.631,-1169.47 624.833,-1177.05"></path>
+<polygon fill="black" stroke="black" points="624.412,-1180.53 634.817,-1178.53 625.438,-1173.6 624.412,-1180.53"></polygon>
+<text text-anchor="middle" x="432" y="-1154.2" font-family="Times,serif" font-size="14.00">s</text>
+</g>
+<!-- s2 -->
+<g id="node3" class="node"><title>s2</title>
+<polygon fill="none" stroke="black" points="610.567,-1089.2 610.567,-1138.8 721.433,-1138.8 721.433,-1089.2 610.567,-1089.2"></polygon>
+<text text-anchor="middle" x="666" y="-1122.2" font-family="Times,serif" font-size="14.00">2</text>
+<polyline fill="none" stroke="black" points="610.567,-1114 721.433,-1114 "></polyline>
+<text text-anchor="middle" x="666" y="-1097.4" font-family="Times,serif" font-size="14.00">[s → struct •, $]</text>
+</g>
+<!-- s0&#45;&gt;s2 -->
+<g id="edge4" class="edge"><title>s0-&gt;s2</title>
+<path fill="none" stroke="black" d="M395.951,-1114C469.074,-1114 547.052,-1114 600.13,-1114"></path>
+<polygon fill="black" stroke="black" points="600.405,-1117.5 610.405,-1114 600.405,-1110.5 600.405,-1117.5"></polygon>
+<text text-anchor="middle" x="432" y="-1118.2" font-family="Times,serif" font-size="14.00">struct</text>
+</g>
+<!-- s3 -->
+<g id="node4" class="node"><title>s3</title>
+<polygon fill="none" stroke="black" points="468.243,-1020.2 468.243,-1069.8 863.757,-1069.8 863.757,-1020.2 468.243,-1020.2"></polygon>
+<text text-anchor="middle" x="666" y="-1053.2" font-family="Times,serif" font-size="14.00">3</text>
+<polyline fill="none" stroke="black" points="468.243,-1045 863.757,-1045 "></polyline>
+<text text-anchor="middle" x="666" y="-1028.4" font-family="Times,serif" font-size="14.00">[struct → TYPE • ID STRUCT L_BRCK lines R_BRCK struct, $]</text>
+</g>
+<!-- s0&#45;&gt;s3 -->
+<g id="edge6" class="edge"><title>s0-&gt;s3</title>
+<path fill="none" stroke="black" d="M395.951,-1084.84C426.302,-1080.34 457.49,-1075.73 487.387,-1071.3"></path>
+<polygon fill="black" stroke="black" points="488.094,-1074.73 497.473,-1069.81 487.068,-1067.81 488.094,-1074.73"></polygon>
+<text text-anchor="middle" x="432" y="-1085.2" font-family="Times,serif" font-size="14.00">TYPE</text>
+</g>
+<!-- s4 -->
+<g id="node5" class="node"><title>s4</title>
+<polygon fill="none" stroke="black" points="916.243,-988.2 916.243,-1037.8 1311.76,-1037.8 1311.76,-988.2 916.243,-988.2"></polygon>
+<text text-anchor="middle" x="1114" y="-1021.2" font-family="Times,serif" font-size="14.00">4</text>
+<polyline fill="none" stroke="black" points="916.243,-1013 1311.76,-1013 "></polyline>
+<text text-anchor="middle" x="1114" y="-996.4" font-family="Times,serif" font-size="14.00">[struct → TYPE ID • STRUCT L_BRCK lines R_BRCK struct, $]</text>
+</g>
+<!-- s3&#45;&gt;s4 -->
+<g id="edge8" class="edge"><title>s3-&gt;s4</title>
+<path fill="none" stroke="black" d="M863.92,-1030.87C877.816,-1029.87 891.848,-1028.87 905.798,-1027.87"></path>
+<polygon fill="black" stroke="black" points="906.214,-1031.35 915.938,-1027.14 905.713,-1024.36 906.214,-1031.35"></polygon>
+<text text-anchor="middle" x="890" y="-1033.2" font-family="Times,serif" font-size="14.00">ID</text>
+</g>
+<!-- s5 -->
+<g id="node6" class="node"><title>s5</title>
+<polygon fill="none" stroke="black" points="1402.24,-982.2 1402.24,-1031.8 1797.76,-1031.8 1797.76,-982.2 1402.24,-982.2"></polygon>
+<text text-anchor="middle" x="1600" y="-1015.2" font-family="Times,serif" font-size="14.00">5</text>
+<polyline fill="none" stroke="black" points="1402.24,-1007 1797.76,-1007 "></polyline>
+<text text-anchor="middle" x="1600" y="-990.4" font-family="Times,serif" font-size="14.00">[struct → TYPE ID STRUCT • L_BRCK lines R_BRCK struct, $]</text>
+</g>
+<!-- s4&#45;&gt;s5 -->
+<g id="edge10" class="edge"><title>s4-&gt;s5</title>
+<path fill="none" stroke="black" d="M1311.86,-1010.56C1338.2,-1010.23 1365.28,-1009.9 1391.79,-1009.57"></path>
+<polygon fill="black" stroke="black" points="1391.96,-1013.07 1401.92,-1009.44 1391.88,-1006.07 1391.96,-1013.07"></polygon>
+<text text-anchor="middle" x="1357" y="-1014.2" font-family="Times,serif" font-size="14.00">STRUCT</text>
+</g>
+<!-- s6 -->
+<g id="node7" class="node"><title>s6</title>
+<polygon fill="none" stroke="black" points="1888.24,-955.4 1888.24,-1038.6 2283.76,-1038.6 2283.76,-955.4 1888.24,-955.4"></polygon>
+<text text-anchor="middle" x="2086" y="-1022" font-family="Times,serif" font-size="14.00">6</text>
+<polyline fill="none" stroke="black" points="1888.24,-1013.8 2283.76,-1013.8 "></polyline>
+<text text-anchor="middle" x="2086" y="-997.2" font-family="Times,serif" font-size="14.00">[struct → TYPE ID STRUCT L_BRCK • lines R_BRCK struct, $]</text>
+<text text-anchor="middle" x="2086" y="-980.4" font-family="Times,serif" font-size="14.00">[lines → • ID exp lines, R_BRCK]</text>
+<text text-anchor="middle" x="2086" y="-963.6" font-family="Times,serif" font-size="14.00">[lines → •, R_BRCK]</text>
+</g>
+<!-- s5&#45;&gt;s6 -->
+<g id="edge12" class="edge"><title>s5-&gt;s6</title>
+<path fill="none" stroke="black" d="M1797.86,-1002.93C1824.2,-1002.39 1851.28,-1001.83 1877.79,-1001.28"></path>
+<polygon fill="black" stroke="black" points="1878,-1004.78 1887.92,-1001.07 1877.85,-997.779 1878,-1004.78"></polygon>
+<text text-anchor="middle" x="1843" y="-1006.2" font-family="Times,serif" font-size="14.00">L_BRCK</text>
+</g>
+<!-- s7 -->
+<g id="node8" class="node"><title>s7</title>
+<polygon fill="none" stroke="black" points="2363.24,-981.2 2363.24,-1030.8 2758.76,-1030.8 2758.76,-981.2 2363.24,-981.2"></polygon>
+<text text-anchor="middle" x="2561" y="-1014.2" font-family="Times,serif" font-size="14.00">7</text>
+<polyline fill="none" stroke="black" points="2363.24,-1006 2758.76,-1006 "></polyline>
+<text text-anchor="middle" x="2561" y="-989.4" font-family="Times,serif" font-size="14.00">[struct → TYPE ID STRUCT L_BRCK lines • R_BRCK struct, $]</text>
+</g>
+<!-- s6&#45;&gt;s7 -->
+<g id="edge14" class="edge"><title>s6-&gt;s7</title>
+<path fill="none" stroke="black" d="M2283.83,-1000.75C2306.59,-1001.18 2329.85,-1001.62 2352.74,-1002.06"></path>
+<polygon fill="black" stroke="black" points="2352.81,-1005.56 2362.88,-1002.25 2352.95,-998.56 2352.81,-1005.56"></polygon>
+<text text-anchor="middle" x="2315" y="-1005.2" font-family="Times,serif" font-size="14.00">lines</text>
+</g>
+<!-- s8 -->
+<g id="node9" class="node"><title>s8</title>
+<polygon fill="none" stroke="black" points="2346.71,-349.8 2346.71,-584.2 2775.29,-584.2 2775.29,-349.8 2346.71,-349.8"></polygon>
+<text text-anchor="middle" x="2561" y="-567.6" font-family="Times,serif" font-size="14.00">8</text>
+<polyline fill="none" stroke="black" points="2346.71,-559.4 2775.29,-559.4 "></polyline>
+<text text-anchor="middle" x="2561" y="-542.8" font-family="Times,serif" font-size="14.00">[struct_anidado → • STRUCT L_BRCK lines R_BRCK, ID / R_BRCK]</text>
+<text text-anchor="middle" x="2561" y="-526" font-family="Times,serif" font-size="14.00">[lines → ID • exp lines, R_BRCK]</text>
+<text text-anchor="middle" x="2561" y="-509.2" font-family="Times,serif" font-size="14.00">[exp → • struct_anidado, ID / R_BRCK]</text>
+<text text-anchor="middle" x="2561" y="-492.4" font-family="Times,serif" font-size="14.00">[exp → • tipo, ID / R_BRCK]</text>
+<text text-anchor="middle" x="2561" y="-475.6" font-family="Times,serif" font-size="14.00">[exp → • array, ID / R_BRCK]</text>
+<text text-anchor="middle" x="2561" y="-458.8" font-family="Times,serif" font-size="14.00">[exp → • struct_sinDefinir, ID / R_BRCK]</text>
+<text text-anchor="middle" x="2561" y="-442" font-family="Times,serif" font-size="14.00">[struct_sinDefinir → • ID, ID / R_BRCK]</text>
+<text text-anchor="middle" x="2561" y="-425.2" font-family="Times,serif" font-size="14.00">[tipo → • STRING, ID / R_BRCK]</text>
+<text text-anchor="middle" x="2561" y="-408.4" font-family="Times,serif" font-size="14.00">[tipo → • INT, ID / R_BRCK]</text>
+<text text-anchor="middle" x="2561" y="-391.6" font-family="Times,serif" font-size="14.00">[tipo → • FLOAT64, ID / R_BRCK]</text>
+<text text-anchor="middle" x="2561" y="-374.8" font-family="Times,serif" font-size="14.00">[tipo → • BOOL, ID / R_BRCK]</text>
+<text text-anchor="middle" x="2561" y="-358" font-family="Times,serif" font-size="14.00">[array → • ARRAY array′, ID / R_BRCK]</text>
+</g>
+<!-- s6&#45;&gt;s8 -->
+<g id="edge16" class="edge"><title>s6-&gt;s8</title>
+<path fill="none" stroke="black" d="M2124.51,-954.969C2193.73,-877.406 2344.02,-709.012 2448.55,-591.883"></path>
+<polygon fill="black" stroke="black" points="2451.32,-594.035 2455.37,-584.244 2446.1,-589.374 2451.32,-594.035"></polygon>
+<text text-anchor="middle" x="2315" y="-751.2" font-family="Times,serif" font-size="14.00">ID</text>
+</g>
+<!-- s9 -->
+<g id="node10" class="node"><title>s9</title>
+<polygon fill="none" stroke="black" points="2925.24,-1025.4 2925.24,-1108.6 3320.76,-1108.6 3320.76,-1025.4 2925.24,-1025.4"></polygon>
+<text text-anchor="middle" x="3123" y="-1092" font-family="Times,serif" font-size="14.00">9</text>
+<polyline fill="none" stroke="black" points="2925.24,-1083.8 3320.76,-1083.8 "></polyline>
+<text text-anchor="middle" x="3123" y="-1067.2" font-family="Times,serif" font-size="14.00">[struct → • TYPE ID STRUCT L_BRCK lines R_BRCK struct, $]</text>
+<text text-anchor="middle" x="3123" y="-1050.4" font-family="Times,serif" font-size="14.00">[struct → TYPE ID STRUCT L_BRCK lines R_BRCK • struct, $]</text>
+<text text-anchor="middle" x="3123" y="-1033.6" font-family="Times,serif" font-size="14.00">[struct → •, $]</text>
+</g>
+<!-- s7&#45;&gt;s9 -->
+<g id="edge18" class="edge"><title>s7-&gt;s9</title>
+<path fill="none" stroke="black" d="M2758.99,-1022.84C2802.19,-1026.9 2847.66,-1031.44 2890,-1036.2 2898.2,-1037.12 2906.56,-1038.09 2915,-1039.09"></path>
+<polygon fill="black" stroke="black" points="2914.59,-1042.57 2924.94,-1040.29 2915.42,-1035.62 2914.59,-1042.57"></polygon>
+<text text-anchor="middle" x="2842" y="-1040.2" font-family="Times,serif" font-size="14.00">R_BRCK</text>
+</g>
+<!-- s10 -->
+<g id="node11" class="node"><title>s10</title>
+<polygon fill="none" stroke="black" points="3014.68,-465.4 3014.68,-548.6 3231.32,-548.6 3231.32,-465.4 3014.68,-465.4"></polygon>
+<text text-anchor="middle" x="3123" y="-532" font-family="Times,serif" font-size="14.00">10</text>
+<polyline fill="none" stroke="black" points="3014.68,-523.8 3231.32,-523.8 "></polyline>
+<text text-anchor="middle" x="3123" y="-507.2" font-family="Times,serif" font-size="14.00">[lines → • ID exp lines, R_BRCK]</text>
+<text text-anchor="middle" x="3123" y="-490.4" font-family="Times,serif" font-size="14.00">[lines → ID exp • lines, R_BRCK]</text>
+<text text-anchor="middle" x="3123" y="-473.6" font-family="Times,serif" font-size="14.00">[lines → •, R_BRCK]</text>
+</g>
+<!-- s8&#45;&gt;s10 -->
+<g id="edge20" class="edge"><title>s8-&gt;s10</title>
+<path fill="none" stroke="black" d="M2775.32,-483.637C2781.62,-484.1 2787.86,-484.556 2794,-485 2863.69,-490.041 2941.75,-495.292 3004.22,-499.4"></path>
+<polygon fill="black" stroke="black" points="3004.3,-502.912 3014.51,-500.075 3004.76,-495.927 3004.3,-502.912"></polygon>
+<text text-anchor="middle" x="2842" y="-496.2" font-family="Times,serif" font-size="14.00">exp</text>
+</g>
+<!-- s11 -->
+<g id="node12" class="node"><title>s11</title>
+<polygon fill="none" stroke="black" points="2997.97,-207.2 2997.97,-256.8 3248.03,-256.8 3248.03,-207.2 2997.97,-207.2"></polygon>
+<text text-anchor="middle" x="3123" y="-240.2" font-family="Times,serif" font-size="14.00">11</text>
+<polyline fill="none" stroke="black" points="2997.97,-232 3248.03,-232 "></polyline>
+<text text-anchor="middle" x="3123" y="-215.4" font-family="Times,serif" font-size="14.00">[exp → struct_anidado •, ID / R_BRCK]</text>
+</g>
+<!-- s8&#45;&gt;s11 -->
+<g id="edge22" class="edge"><title>s8-&gt;s11</title>
+<path fill="none" stroke="black" d="M2666.55,-349.611C2703.34,-315.671 2747.26,-282.375 2794,-262.2 2854.3,-236.169 2926.52,-227.417 2987.82,-225.679"></path>
+<polygon fill="black" stroke="black" points="2988.03,-229.175 2997.95,-225.452 2987.88,-222.177 2988.03,-229.175"></polygon>
+<text text-anchor="middle" x="2842" y="-267.2" font-family="Times,serif" font-size="14.00">struct_anidado</text>
+</g>
+<!-- s12 -->
+<g id="node13" class="node"><title>s12</title>
+<polygon fill="none" stroke="black" points="3028.29,-138.2 3028.29,-187.8 3217.71,-187.8 3217.71,-138.2 3028.29,-138.2"></polygon>
+<text text-anchor="middle" x="3123" y="-171.2" font-family="Times,serif" font-size="14.00">12</text>
+<polyline fill="none" stroke="black" points="3028.29,-163 3217.71,-163 "></polyline>
+<text text-anchor="middle" x="3123" y="-146.4" font-family="Times,serif" font-size="14.00">[exp → tipo •, ID / R_BRCK]</text>
+</g>
+<!-- s8&#45;&gt;s12 -->
+<g id="edge24" class="edge"><title>s8-&gt;s12</title>
+<path fill="none" stroke="black" d="M2642.09,-349.752C2681.97,-300.415 2734.41,-247.144 2794,-215.2 2862.76,-178.341 2950.46,-165.862 3017.88,-162.289"></path>
+<polygon fill="black" stroke="black" points="3018.27,-165.775 3028.09,-161.807 3017.94,-158.782 3018.27,-165.775"></polygon>
+<text text-anchor="middle" x="2842" y="-220.2" font-family="Times,serif" font-size="14.00">tipo</text>
+</g>
+<!-- s13 -->
+<g id="node14" class="node"><title>s13</title>
+<polygon fill="none" stroke="black" points="3024.8,-69.2 3024.8,-118.8 3221.2,-118.8 3221.2,-69.2 3024.8,-69.2"></polygon>
+<text text-anchor="middle" x="3123" y="-102.2" font-family="Times,serif" font-size="14.00">13</text>
+<polyline fill="none" stroke="black" points="3024.8,-94 3221.2,-94 "></polyline>
+<text text-anchor="middle" x="3123" y="-77.4" font-family="Times,serif" font-size="14.00">[exp → array •, ID / R_BRCK]</text>
+</g>
+<!-- s8&#45;&gt;s13 -->
+<g id="edge26" class="edge"><title>s8-&gt;s13</title>
+<path fill="none" stroke="black" d="M2624.92,-349.546C2665.22,-284.827 2723.22,-208.127 2794,-160.2 2858.74,-116.36 2946.07,-100.319 3014.34,-94.9643"></path>
+<polygon fill="black" stroke="black" points="3014.97,-98.4279 3024.7,-94.2219 3014.47,-91.4459 3014.97,-98.4279"></polygon>
+<text text-anchor="middle" x="2842" y="-165.2" font-family="Times,serif" font-size="14.00">array</text>
+</g>
+<!-- s14 -->
+<g id="node15" class="node"><title>s14</title>
+<polygon fill="none" stroke="black" points="2991.75,-0.2 2991.75,-49.8 3254.25,-49.8 3254.25,-0.2 2991.75,-0.2"></polygon>
+<text text-anchor="middle" x="3123" y="-33.2" font-family="Times,serif" font-size="14.00">14</text>
+<polyline fill="none" stroke="black" points="2991.75,-25 3254.25,-25 "></polyline>
+<text text-anchor="middle" x="3123" y="-8.4" font-family="Times,serif" font-size="14.00">[exp → struct_sinDefinir •, ID / R_BRCK]</text>
+</g>
+<!-- s8&#45;&gt;s14 -->
+<g id="edge28" class="edge"><title>s8-&gt;s14</title>
+<path fill="none" stroke="black" d="M2610.04,-349.64C2648.73,-268.561 2710.45,-163.889 2794,-98.2 2846.9,-56.6093 2918.7,-37.636 2981.65,-29.3426"></path>
+<polygon fill="black" stroke="black" points="2982.17,-32.8041 2991.67,-28.1015 2981.31,-25.8572 2982.17,-32.8041"></polygon>
+<text text-anchor="middle" x="2842" y="-103.2" font-family="Times,serif" font-size="14.00">struct_sinDefinir</text>
+</g>
+<!-- s15 -->
+<g id="node16" class="node"><title>s15</title>
+<polygon fill="none" stroke="black" points="2908.71,-328.2 2908.71,-377.8 3337.29,-377.8 3337.29,-328.2 2908.71,-328.2"></polygon>
+<text text-anchor="middle" x="3123" y="-361.2" font-family="Times,serif" font-size="14.00">15</text>
+<polyline fill="none" stroke="black" points="2908.71,-353 3337.29,-353 "></polyline>
+<text text-anchor="middle" x="3123" y="-336.4" font-family="Times,serif" font-size="14.00">[struct_anidado → STRUCT • L_BRCK lines R_BRCK, ID / R_BRCK]</text>
+</g>
+<!-- s8&#45;&gt;s15 -->
+<g id="edge30" class="edge"><title>s8-&gt;s15</title>
+<path fill="none" stroke="black" d="M2775.56,-415.51C2819.24,-405.747 2865,-396.075 2908,-388 2923.24,-385.137 2939.12,-382.289 2955.04,-379.526"></path>
+<polygon fill="black" stroke="black" points="2955.69,-382.965 2964.95,-377.816 2954.5,-376.067 2955.69,-382.965"></polygon>
+<text text-anchor="middle" x="2842" y="-414.2" font-family="Times,serif" font-size="14.00">STRUCT</text>
+</g>
+<!-- s16 -->
+<g id="node17" class="node"><title>s16</title>
+<polygon fill="none" stroke="black" points="3539.12,-624.2 3539.12,-673.8 3758.88,-673.8 3758.88,-624.2 3539.12,-624.2"></polygon>
+<text text-anchor="middle" x="3649" y="-657.2" font-family="Times,serif" font-size="14.00">16</text>
+<polyline fill="none" stroke="black" points="3539.12,-649 3758.88,-649 "></polyline>
+<text text-anchor="middle" x="3649" y="-632.4" font-family="Times,serif" font-size="14.00">[tipo → STRING •, ID / R_BRCK]</text>
+</g>
+<!-- s8&#45;&gt;s16 -->
+<g id="edge32" class="edge"><title>s8-&gt;s16</title>
+<path fill="none" stroke="black" d="M2775.37,-565.957C2818.47,-582.324 2864.05,-597.146 2908,-607 3022.62,-632.704 3350.16,-643.107 3528.6,-646.96"></path>
+<polygon fill="black" stroke="black" points="3528.75,-650.464 3538.82,-647.177 3528.9,-643.466 3528.75,-650.464"></polygon>
+<text text-anchor="middle" x="3123" y="-646.2" font-family="Times,serif" font-size="14.00">STRING</text>
+</g>
+<!-- s17 -->
+<g id="node18" class="node"><title>s17</title>
+<polygon fill="none" stroke="black" points="3552.73,-555.2 3552.73,-604.8 3745.27,-604.8 3745.27,-555.2 3552.73,-555.2"></polygon>
+<text text-anchor="middle" x="3649" y="-588.2" font-family="Times,serif" font-size="14.00">17</text>
+<polyline fill="none" stroke="black" points="3552.73,-580 3745.27,-580 "></polyline>
+<text text-anchor="middle" x="3649" y="-563.4" font-family="Times,serif" font-size="14.00">[tipo → INT •, ID / R_BRCK]</text>
+</g>
+<!-- s8&#45;&gt;s17 -->
+<g id="edge34" class="edge"><title>s8-&gt;s17</title>
+<path fill="none" stroke="black" d="M2775.46,-531.236C2818.95,-542.026 2864.66,-551.74 2908,-558 3132.08,-590.366 3398.14,-588.607 3542.32,-584.361"></path>
+<polygon fill="black" stroke="black" points="3542.6,-587.854 3552.49,-584.052 3542.39,-580.858 3542.6,-587.854"></polygon>
+<text text-anchor="middle" x="3123" y="-591.2" font-family="Times,serif" font-size="14.00">INT</text>
+</g>
+<!-- s18 -->
+<g id="node19" class="node"><title>s18</title>
+<polygon fill="none" stroke="black" points="3534.84,-969.2 3534.84,-1018.8 3763.16,-1018.8 3763.16,-969.2 3534.84,-969.2"></polygon>
+<text text-anchor="middle" x="3649" y="-1002.2" font-family="Times,serif" font-size="14.00">18</text>
+<polyline fill="none" stroke="black" points="3534.84,-994 3763.16,-994 "></polyline>
+<text text-anchor="middle" x="3649" y="-977.4" font-family="Times,serif" font-size="14.00">[tipo → FLOAT64 •, ID / R_BRCK]</text>
+</g>
+<!-- s8&#45;&gt;s18 -->
+<g id="edge36" class="edge"><title>s8-&gt;s18</title>
+<path fill="none" stroke="black" d="M2609.85,-584.286C2663.7,-699.393 2763.04,-868.966 2908,-949 2960.43,-977.949 3327.84,-988.591 3524.46,-992.243"></path>
+<polygon fill="black" stroke="black" points="3524.5,-995.744 3534.56,-992.427 3524.63,-988.745 3524.5,-995.744"></polygon>
+<text text-anchor="middle" x="3123" y="-991.2" font-family="Times,serif" font-size="14.00">FLOAT64</text>
+</g>
+<!-- s19 -->
+<g id="node20" class="node"><title>s19</title>
+<polygon fill="none" stroke="black" points="3545.34,-693.2 3545.34,-742.8 3752.66,-742.8 3752.66,-693.2 3545.34,-693.2"></polygon>
+<text text-anchor="middle" x="3649" y="-726.2" font-family="Times,serif" font-size="14.00">19</text>
+<polyline fill="none" stroke="black" points="3545.34,-718 3752.66,-718 "></polyline>
+<text text-anchor="middle" x="3649" y="-701.4" font-family="Times,serif" font-size="14.00">[tipo → BOOL •, ID / R_BRCK]</text>
+</g>
+<!-- s8&#45;&gt;s19 -->
+<g id="edge38" class="edge"><title>s8-&gt;s19</title>
+<path fill="none" stroke="black" d="M2732.7,-584.246C2786.47,-615.275 2847.64,-644.867 2908,-662 3022.59,-694.525 3357.72,-709.281 3535.01,-714.968"></path>
+<polygon fill="black" stroke="black" points="3535.05,-718.47 3545.15,-715.289 3535.27,-711.474 3535.05,-718.47"></polygon>
+<text text-anchor="middle" x="3123" y="-711.2" font-family="Times,serif" font-size="14.00">BOOL</text>
+</g>
+<!-- s20 -->
+<g id="node21" class="node"><title>s20</title>
+<polygon fill="none" stroke="black" points="2987.29,-738.4 2987.29,-905.6 3258.71,-905.6 3258.71,-738.4 2987.29,-738.4"></polygon>
+<text text-anchor="middle" x="3123" y="-889" font-family="Times,serif" font-size="14.00">20</text>
+<polyline fill="none" stroke="black" points="2987.29,-880.8 3258.71,-880.8 "></polyline>
+<text text-anchor="middle" x="3123" y="-864.2" font-family="Times,serif" font-size="14.00">[tipo → • STRING, ID / R_BRCK]</text>
+<text text-anchor="middle" x="3123" y="-847.4" font-family="Times,serif" font-size="14.00">[tipo → • INT, ID / R_BRCK]</text>
+<text text-anchor="middle" x="3123" y="-830.6" font-family="Times,serif" font-size="14.00">[tipo → • FLOAT64, ID / R_BRCK]</text>
+<text text-anchor="middle" x="3123" y="-813.8" font-family="Times,serif" font-size="14.00">[tipo → • BOOL, ID / R_BRCK]</text>
+<text text-anchor="middle" x="3123" y="-797" font-family="Times,serif" font-size="14.00">[array → • ARRAY array′, ID / R_BRCK]</text>
+<text text-anchor="middle" x="3123" y="-780.2" font-family="Times,serif" font-size="14.00">[array → ARRAY • array′, ID / R_BRCK]</text>
+<text text-anchor="middle" x="3123" y="-763.4" font-family="Times,serif" font-size="14.00">[array′ → • tipo, ID / R_BRCK]</text>
+<text text-anchor="middle" x="3123" y="-746.6" font-family="Times,serif" font-size="14.00">[array′ → • array, ID / R_BRCK]</text>
+</g>
+<!-- s8&#45;&gt;s20 -->
+<g id="edge40" class="edge"><title>s8-&gt;s20</title>
+<path fill="none" stroke="black" d="M2648.94,-584.417C2688.7,-631.217 2739.16,-682.136 2794,-717 2849.33,-752.171 2917.43,-776.476 2977.21,-792.771"></path>
+<polygon fill="black" stroke="black" points="2976.55,-796.217 2987.12,-795.419 2978.36,-789.455 2976.55,-796.217"></polygon>
+<text text-anchor="middle" x="2842" y="-766.2" font-family="Times,serif" font-size="14.00">ARRAY</text>
+</g>
+<!-- s21 -->
+<g id="node22" class="node"><title>s21</title>
+<polygon fill="none" stroke="black" points="2994.47,-397.2 2994.47,-446.8 3251.53,-446.8 3251.53,-397.2 2994.47,-397.2"></polygon>
+<text text-anchor="middle" x="3123" y="-430.2" font-family="Times,serif" font-size="14.00">21</text>
+<polyline fill="none" stroke="black" points="2994.47,-422 3251.53,-422 "></polyline>
+<text text-anchor="middle" x="3123" y="-405.4" font-family="Times,serif" font-size="14.00">[struct_sinDefinir → ID •, ID / R_BRCK]</text>
+</g>
+<!-- s8&#45;&gt;s21 -->
+<g id="edge42" class="edge"><title>s8-&gt;s21</title>
+<path fill="none" stroke="black" d="M2775.59,-440.862C2781.79,-440.278 2787.94,-439.722 2794,-439.2 2856.3,-433.84 2925.41,-429.916 2984.06,-427.181"></path>
+<polygon fill="black" stroke="black" points="2984.31,-430.674 2994.13,-426.719 2983.98,-423.681 2984.31,-430.674"></polygon>
+<text text-anchor="middle" x="2842" y="-444.2" font-family="Times,serif" font-size="14.00">ID</text>
+</g>
+<!-- s9&#45;&gt;s3 -->
+<g id="edge46" class="edge"><title>s9-&gt;s3</title>
+<path fill="none" stroke="black" d="M2925.04,-1067C2817.71,-1067 2682.56,-1067 2562,-1067 1113,-1067 1113,-1067 1113,-1067 1034.91,-1067 949.225,-1063.59 874.01,-1059.46"></path>
+<polygon fill="black" stroke="black" points="874.123,-1055.96 863.944,-1058.9 873.733,-1062.95 874.123,-1055.96"></polygon>
+<text text-anchor="middle" x="1843" y="-1071.2" font-family="Times,serif" font-size="14.00">TYPE</text>
+</g>
+<!-- s22 -->
+<g id="node23" class="node"><title>s22</title>
+<polygon fill="none" stroke="black" points="3451.24,-1042.2 3451.24,-1091.8 3846.76,-1091.8 3846.76,-1042.2 3451.24,-1042.2"></polygon>
+<text text-anchor="middle" x="3649" y="-1075.2" font-family="Times,serif" font-size="14.00">22</text>
+<polyline fill="none" stroke="black" points="3451.24,-1067 3846.76,-1067 "></polyline>
+<text text-anchor="middle" x="3649" y="-1050.4" font-family="Times,serif" font-size="14.00">[struct → TYPE ID STRUCT L_BRCK lines R_BRCK struct •, $]</text>
+</g>
+<!-- s9&#45;&gt;s22 -->
+<g id="edge44" class="edge"><title>s9-&gt;s22</title>
+<path fill="none" stroke="black" d="M3320.98,-1067C3360.18,-1067 3401.46,-1067 3440.98,-1067"></path>
+<polygon fill="black" stroke="black" points="3440.99,-1070.5 3450.99,-1067 3440.99,-1063.5 3440.99,-1070.5"></polygon>
+<text text-anchor="middle" x="3386" y="-1071.2" font-family="Times,serif" font-size="14.00">struct</text>
+</g>
+<!-- s10&#45;&gt;s8 -->
+<g id="edge50" class="edge"><title>s10-&gt;s8</title>
+<path fill="none" stroke="black" d="M3014.56,-482.96C2975.55,-475.351 2930.99,-467.949 2890,-464.2 2856.32,-461.119 2820.62,-459.619 2785.64,-459.131"></path>
+<polygon fill="black" stroke="black" points="2785.34,-455.627 2775.3,-459.015 2785.26,-462.627 2785.34,-455.627"></polygon>
+<text text-anchor="middle" x="2842" y="-469.2" font-family="Times,serif" font-size="14.00">ID</text>
+</g>
+<!-- s23 -->
+<g id="node24" class="node"><title>s23</title>
+<polygon fill="none" stroke="black" points="3540.68,-482.2 3540.68,-531.8 3757.32,-531.8 3757.32,-482.2 3540.68,-482.2"></polygon>
+<text text-anchor="middle" x="3649" y="-515.2" font-family="Times,serif" font-size="14.00">23</text>
+<polyline fill="none" stroke="black" points="3540.68,-507 3757.32,-507 "></polyline>
+<text text-anchor="middle" x="3649" y="-490.4" font-family="Times,serif" font-size="14.00">[lines → ID exp lines •, R_BRCK]</text>
+</g>
+<!-- s10&#45;&gt;s23 -->
+<g id="edge48" class="edge"><title>s10-&gt;s23</title>
+<path fill="none" stroke="black" d="M3231.62,-507C3318.57,-507 3440.79,-507 3530.32,-507"></path>
+<polygon fill="black" stroke="black" points="3530.52,-510.5 3540.52,-507 3530.52,-503.5 3530.52,-510.5"></polygon>
+<text text-anchor="middle" x="3386" y="-511.2" font-family="Times,serif" font-size="14.00">lines</text>
+</g>
+<!-- s24 -->
+<g id="node25" class="node"><title>s24</title>
+<polygon fill="none" stroke="black" points="3434.71,-275.4 3434.71,-358.6 3863.29,-358.6 3863.29,-275.4 3434.71,-275.4"></polygon>
+<text text-anchor="middle" x="3649" y="-342" font-family="Times,serif" font-size="14.00">24</text>
+<polyline fill="none" stroke="black" points="3434.71,-333.8 3863.29,-333.8 "></polyline>
+<text text-anchor="middle" x="3649" y="-317.2" font-family="Times,serif" font-size="14.00">[struct_anidado → STRUCT L_BRCK • lines R_BRCK, ID / R_BRCK]</text>
+<text text-anchor="middle" x="3649" y="-300.4" font-family="Times,serif" font-size="14.00">[lines → • ID exp lines, R_BRCK]</text>
+<text text-anchor="middle" x="3649" y="-283.6" font-family="Times,serif" font-size="14.00">[lines → •, R_BRCK]</text>
+</g>
+<!-- s15&#45;&gt;s24 -->
+<g id="edge52" class="edge"><title>s15-&gt;s24</title>
+<path fill="none" stroke="black" d="M3337.51,-338.331C3366.13,-336.365 3395.56,-334.344 3424.35,-332.365"></path>
+<polygon fill="black" stroke="black" points="3424.77,-335.845 3434.5,-331.668 3424.29,-328.862 3424.77,-335.845"></polygon>
+<text text-anchor="middle" x="3386" y="-341.2" font-family="Times,serif" font-size="14.00">L_BRCK</text>
+</g>
+<!-- s20&#45;&gt;s16 -->
+<g id="edge60" class="edge"><title>s20-&gt;s16</title>
+<path fill="none" stroke="black" d="M3259.04,-760.957C3338.15,-725.352 3424.44,-686.858 3434,-684 3464.27,-674.952 3497.69,-668.075 3528.94,-662.918"></path>
+<polygon fill="black" stroke="black" points="3529.69,-666.343 3539,-661.303 3528.58,-659.432 3529.69,-666.343"></polygon>
+<text text-anchor="middle" x="3386" y="-720.2" font-family="Times,serif" font-size="14.00">STRING</text>
+</g>
+<!-- s20&#45;&gt;s17 -->
+<g id="edge62" class="edge"><title>s20-&gt;s17</title>
+<path fill="none" stroke="black" d="M3258.93,-779.239C3287.94,-765.033 3316.35,-746.608 3338,-723 3353.91,-705.655 3341.98,-692.101 3356,-673.2 3381.77,-638.463 3394.19,-631.906 3434,-615 3467.89,-600.608 3507.12,-592.105 3542.67,-587.09"></path>
+<polygon fill="black" stroke="black" points="3543.14,-590.559 3552.58,-585.767 3542.21,-583.62 3543.14,-590.559"></polygon>
+<text text-anchor="middle" x="3386" y="-678.2" font-family="Times,serif" font-size="14.00">INT</text>
+</g>
+<!-- s20&#45;&gt;s18 -->
+<g id="edge64" class="edge"><title>s20-&gt;s18</title>
+<path fill="none" stroke="black" d="M3258.9,-890.556C3312.29,-915.297 3374.92,-941.427 3434,-959 3462.85,-967.583 3494.56,-974.218 3524.52,-979.286"></path>
+<polygon fill="black" stroke="black" points="3524.17,-982.776 3534.61,-980.945 3525.31,-975.868 3524.17,-982.776"></polygon>
+<text text-anchor="middle" x="3386" y="-954.2" font-family="Times,serif" font-size="14.00">FLOAT64</text>
+</g>
+<!-- s20&#45;&gt;s19 -->
+<g id="edge66" class="edge"><title>s20-&gt;s19</title>
+<path fill="none" stroke="black" d="M3259.08,-790.182C3313.3,-777.867 3376.48,-764.096 3434,-753 3466.75,-746.683 3502.45,-740.547 3535.15,-735.223"></path>
+<polygon fill="black" stroke="black" points="3535.89,-738.65 3545.2,-733.598 3534.77,-731.74 3535.89,-738.65"></polygon>
+<text text-anchor="middle" x="3386" y="-772.2" font-family="Times,serif" font-size="14.00">BOOL</text>
+</g>
+<!-- s20&#45;&gt;s20 -->
+<g id="edge68" class="edge"><title>s20-&gt;s20</title>
+<path fill="none" stroke="black" d="M3079.68,-905.64C3087.07,-916.679 3101.51,-924 3123,-924 3139.12,-924 3151.27,-919.882 3159.46,-913.166"></path>
+<polygon fill="black" stroke="black" points="3162.17,-915.387 3166.32,-905.64 3157,-910.67 3162.17,-915.387"></polygon>
+<text text-anchor="middle" x="3123" y="-928.2" font-family="Times,serif" font-size="14.00">ARRAY</text>
+</g>
+<!-- s25 -->
+<g id="node26" class="node"><title>s25</title>
+<polygon fill="none" stroke="black" points="3513.29,-762.2 3513.29,-811.8 3784.71,-811.8 3784.71,-762.2 3513.29,-762.2"></polygon>
+<text text-anchor="middle" x="3649" y="-795.2" font-family="Times,serif" font-size="14.00">25</text>
+<polyline fill="none" stroke="black" points="3513.29,-787 3784.71,-787 "></polyline>
+<text text-anchor="middle" x="3649" y="-770.4" font-family="Times,serif" font-size="14.00">[array → ARRAY array′ •, ID / R_BRCK]</text>
+</g>
+<!-- s20&#45;&gt;s25 -->
+<g id="edge54" class="edge"><title>s20-&gt;s25</title>
+<path fill="none" stroke="black" d="M3258.94,-812.987C3333.67,-807.995 3426.6,-801.788 3502.89,-796.693"></path>
+<polygon fill="black" stroke="black" points="3503.32,-800.172 3513.06,-796.013 3502.85,-793.188 3503.32,-800.172"></polygon>
+<text text-anchor="middle" x="3386" y="-809.2" font-family="Times,serif" font-size="14.00">array'</text>
+</g>
+<!-- s26 -->
+<g id="node27" class="node"><title>s26</title>
+<polygon fill="none" stroke="black" points="3543.02,-900.2 3543.02,-949.8 3754.98,-949.8 3754.98,-900.2 3543.02,-900.2"></polygon>
+<text text-anchor="middle" x="3649" y="-933.2" font-family="Times,serif" font-size="14.00">26</text>
+<polyline fill="none" stroke="black" points="3543.02,-925 3754.98,-925 "></polyline>
+<text text-anchor="middle" x="3649" y="-908.4" font-family="Times,serif" font-size="14.00">[array′ → tipo •, ID / R_BRCK]</text>
+</g>
+<!-- s20&#45;&gt;s26 -->
+<g id="edge56" class="edge"><title>s20-&gt;s26</title>
+<path fill="none" stroke="black" d="M3258.72,-853.205C3313.03,-865.353 3376.36,-878.974 3434,-890 3465.86,-896.096 3500.52,-902.054 3532.49,-907.276"></path>
+<polygon fill="black" stroke="black" points="3532.33,-910.796 3542.76,-908.944 3533.45,-903.887 3532.33,-910.796"></polygon>
+<text text-anchor="middle" x="3386" y="-889.2" font-family="Times,serif" font-size="14.00">tipo</text>
+</g>
+<!-- s27 -->
+<g id="node28" class="node"><title>s27</title>
+<polygon fill="none" stroke="black" points="3539.53,-831.2 3539.53,-880.8 3758.47,-880.8 3758.47,-831.2 3539.53,-831.2"></polygon>
+<text text-anchor="middle" x="3649" y="-864.2" font-family="Times,serif" font-size="14.00">27</text>
+<polyline fill="none" stroke="black" points="3539.53,-856 3758.47,-856 "></polyline>
+<text text-anchor="middle" x="3649" y="-839.4" font-family="Times,serif" font-size="14.00">[array′ → array •, ID / R_BRCK]</text>
+</g>
+<!-- s20&#45;&gt;s27 -->
+<g id="edge58" class="edge"><title>s20-&gt;s27</title>
+<path fill="none" stroke="black" d="M3258.94,-830.756C3342.55,-836.181 3448.93,-843.083 3529.31,-848.299"></path>
+<polygon fill="black" stroke="black" points="3529.27,-851.804 3539.48,-848.959 3529.73,-844.818 3529.27,-851.804"></polygon>
+<text text-anchor="middle" x="3386" y="-844.2" font-family="Times,serif" font-size="14.00">array</text>
+</g>
+<!-- s24&#45;&gt;s8 -->
+<g id="edge72" class="edge"><title>s24-&gt;s8</title>
+<path fill="none" stroke="black" d="M3434.35,-285.839C3285.04,-270.562 3082.06,-262.864 2908,-302.2 2865.01,-311.915 2821.1,-327.636 2779.63,-345.605"></path>
+<polygon fill="black" stroke="black" points="2778.01,-342.493 2770.26,-349.719 2780.83,-348.902 2778.01,-342.493"></polygon>
+<text text-anchor="middle" x="3123" y="-307.2" font-family="Times,serif" font-size="14.00">ID</text>
+</g>
+<!-- s28 -->
+<g id="node29" class="node"><title>s28</title>
+<polygon fill="none" stroke="black" points="3926.71,-292.2 3926.71,-341.8 4355.29,-341.8 4355.29,-292.2 3926.71,-292.2"></polygon>
+<text text-anchor="middle" x="4141" y="-325.2" font-family="Times,serif" font-size="14.00">28</text>
+<polyline fill="none" stroke="black" points="3926.71,-317 4355.29,-317 "></polyline>
+<text text-anchor="middle" x="4141" y="-300.4" font-family="Times,serif" font-size="14.00">[struct_anidado → STRUCT L_BRCK lines • R_BRCK, ID / R_BRCK]</text>
+</g>
+<!-- s24&#45;&gt;s28 -->
+<g id="edge70" class="edge"><title>s24-&gt;s28</title>
+<path fill="none" stroke="black" d="M3863.5,-317C3880.96,-317 3898.64,-317 3916.17,-317"></path>
+<polygon fill="black" stroke="black" points="3916.48,-320.5 3926.48,-317 3916.48,-313.5 3916.48,-320.5"></polygon>
+<text text-anchor="middle" x="3895" y="-321.2" font-family="Times,serif" font-size="14.00">lines</text>
+</g>
+<!-- s29 -->
+<g id="node30" class="node"><title>s29</title>
+<polygon fill="none" stroke="black" points="4446.71,-292.2 4446.71,-341.8 4875.29,-341.8 4875.29,-292.2 4446.71,-292.2"></polygon>
+<text text-anchor="middle" x="4661" y="-325.2" font-family="Times,serif" font-size="14.00">29</text>
+<polyline fill="none" stroke="black" points="4446.71,-317 4875.29,-317 "></polyline>
+<text text-anchor="middle" x="4661" y="-300.4" font-family="Times,serif" font-size="14.00">[struct_anidado → STRUCT L_BRCK lines R_BRCK •, ID / R_BRCK]</text>
+</g>
+<!-- s28&#45;&gt;s29 -->
+<g id="edge74" class="edge"><title>s28-&gt;s29</title>
+<path fill="none" stroke="black" d="M4355.31,-317C4382.01,-317 4409.39,-317 4436.25,-317"></path>
+<polygon fill="black" stroke="black" points="4436.51,-320.5 4446.51,-317 4436.51,-313.5 4436.51,-320.5"></polygon>
+<text text-anchor="middle" x="4401" y="-321.2" font-family="Times,serif" font-size="14.00">R_BRCK</text>
+</g>
+</g>
+</svg>

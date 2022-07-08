@@ -4,11 +4,15 @@ import argparse
 from goparser import readParse
 from tests import run_tests
 
-# s -> TYPE ID STRUCT L_BRCK t R_BRCK s | lambda.
-# s_anidado -> STRUCT L_BRCK t R_BRCK.
-# t -> ID t'
-# t' -> s_anidado | tipo | array
-# tipo -> STRING| INT |FLOAT64 | BOOL.
+# Gramatica utilizada
+
+# s -> struct
+# struct -> TYPE ID STRUCT L_BRCK lines R_BRCK struct | lambda.
+# struct_anidado -> STRUCT L_BRCK lines R_BRCK.
+# lines -> ID exp lines | lambda
+# exp -> struct_anidado | tipo | array | struct_sinDefinir
+# struct_sinDefinir -> ID
+# tipo -> STRING | INT | FLOAT64 | BOOL.
 # array -> ARRAY array'.
 # array' -> tipo | array.
 

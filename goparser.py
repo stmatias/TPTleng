@@ -9,7 +9,6 @@ def p_s(p):
         '''s : struct '''
         p[1].sanitize()
         p[0] = indent(p[1].json())
-        # ToDo: Hacer indent
 
 def p_struct(p):
     '''struct : TYPE ID STRUCT L_BRCK lines R_BRCK struct 
@@ -36,12 +35,12 @@ def p_exp(p):
     exp : struct_anidado 
         | tipo 
         | array
-        | s_sinDefinir
+        | struct_sinDefinir
     '''
     p[0] = p[1]
 
-def p_s_sinDefinir(p):
-    '''s_sinDefinir : ID'''
+def p_struct_sinDefinir(p):
+    '''struct_sinDefinir : ID'''
     p[0] = StructNodeSinDefinir(p[1],lineno = p.lineno(0))
 
 def p_struct_anidado(p):

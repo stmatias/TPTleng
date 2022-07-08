@@ -1,4 +1,5 @@
 import ply.lex as lex
+import sys
 
 # VT = {STRING, INT, FLOAT64, BOOL, RBRACKET, LBRACKET, ARRAY, STRUCT}
 tokens = ['TYPE','ID','STRING', 'INT', 'FLOAT64', 'BOOL', 'R_BRCK', 'L_BRCK', 'ARRAY', 'STRUCT' ]
@@ -51,7 +52,8 @@ def t_ID(t):
     return t
 
 def t_error(t):
-    print("Illegal character '%s'" % t.value[0])
-    t.lexer.skip(1)
+    print("Caracter illegal '%s'" % t.value[0])
+    print("Por favor corriga el texto e intente de nuevo.")
+    sys.exit()
 
 lexer = lex.lex()
